@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsPackable>true</IsPackable>
+
+        <!-- TODO: Might just be better off using workstation GC instead of DATAS with server GC -->
+        <ServerGarbageCollection>true</ServerGarbageCollection>
+        <GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
+
+        <AssemblyName>OpenTelemetryCollector.SiteExtension.Host</AssemblyName>
+        <RootNamespace>OpenTelemetryCollector.SiteExtension.Host</RootNamespace>
+        <PackageId>OpenTelemetryCollector.SiteExtension.Host</PackageId>
+        <Version>0.1.0-alpha0</Version>
+        <Authors>James Upjohn</Authors>
+        <Description>An Azure site extension to run an OpenTelemetry collector in a "sidecar" configuration</Description>
+        <PackageTags>AzureSiteExtension;OpenTelemetry;Tracing;Metrics;Logging</PackageTags>
+        <PackageProjectUrl>https://github.com/jupjohn/OpenTelemetryCollector.SiteExtension</PackageProjectUrl>
+        <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="applicationHost.xdt" CopyToOutputDirectory="PreserveNewest" />
+      <None Include="scmApplicationHost.xdt" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="3.1.1" />
+      <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+      <PackageReference Include="Serilog.Sinks.EventLog" Version="3.1.0" />
+      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    </ItemGroup>
+
+</Project>

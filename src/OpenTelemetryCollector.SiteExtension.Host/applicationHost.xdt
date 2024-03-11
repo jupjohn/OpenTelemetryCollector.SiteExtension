@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.applicationHost>
+    <sites>
+      <site name="%XDT_SITENAME%" xdt:Locator="Match(name)">
+        <application path="/" xdt:Locator="Match(path)" xdt:Transform="Remove" />
+        <application path="/" applicationPool="%XDT_APPPOOLNAME%" xdt:Transform="Insert">
+          <virtualDirectory path="/_otelcol" physicalPath="%XDT_EXTENSIONPATH%" />
+        </application>
+      </site>
+    </sites>
+  </system.applicationHost>
+  <system.webServer>
+    <runtime xdt:Transform="InsertIfMissing" >
+      <environmentVariables xdt:Transform="InsertIfMissing">
+        <!-- FIXME: These transforms will killing the initialization, what was going on here? -->
+        <!--<add name="OTELCOL_BINARY_URL" value="" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing"/>-->
+        <!--<add name="OTELCOL_BINARY_SHA" value="" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing"/>-->
+      </environmentVariables>
+    </runtime>
+  </system.webServer>
+</configuration>

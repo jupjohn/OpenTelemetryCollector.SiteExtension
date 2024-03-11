@@ -1,0 +1,29 @@
+# This file is a test otelcol config used to validate test builds
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters:
+  file:
+    path: 'C:/home/LogFiles/OpenTelemetryCollector.log'
+
+processors:
+  batch:
+    send_batch_size: 100
+    timeout: 5s
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [file]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [file]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [file]
