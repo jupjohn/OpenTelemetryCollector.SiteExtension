@@ -16,7 +16,7 @@ This code is NOT production ready, and I wouldn't trust it in its current state 
 This is a WIP, so here's how I'm currently packaging things up for testing:
 
 1. `dotnet publish`
-1. Upload contents of the `<project_dir>/bin/<build_configuration>/net8.0/publish/` to the app's `site/SiteExtensions` directory
+1. Upload contents of the `<project_dir>/bin/<build_configuration>/net8.0/publish/` to the app's `site/SiteExtensions/OpenTelemetryCollector.SiteExtension` directory
 1. Add the following required config values to the app's envvar (example config will dump data to disk):
     - `OTELCOL_SITE_EXTENSION:BinaryLocation`: `https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.105.0/otelcol-contrib_0.105.0_windows_amd64.tar.gz`
     - `OTELCOL_SITE_EXTENSION:Configuration`: `https://raw.githubusercontent.com/jupjohn/OpenTelemetryCollector.SiteExtension/main/test/test-otelcol-config.yaml`
